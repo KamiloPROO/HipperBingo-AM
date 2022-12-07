@@ -24,7 +24,7 @@ function CallEndPointPost(url, jsonArgs) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Credenciales Incorrectas',
+                        text: data.MessageResponse,
                       })
 
                 }else if (data.CodeResponse == 401 ){
@@ -32,7 +32,15 @@ function CallEndPointPost(url, jsonArgs) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'No has verificado tu cuenta',
+                        text: data.MessageResponse,
+                      })
+
+                }else if (data.CodeResponse == 404 ){
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: data.MessageResponse,
                       })
 
                 }else{

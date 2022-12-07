@@ -26,7 +26,7 @@ function CallEndPointPost(url, jsonArgs) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Ya te encuentras registrado en nuestro sistema',
+                        text: data.MessageResponse,
                     })
 
                 }

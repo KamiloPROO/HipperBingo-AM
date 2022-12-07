@@ -34,7 +34,7 @@ function CallEndPointPostVeri(url, jsonArgs) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Codigo de verificacion incorrecto',
+                    text: data.MessageResponse,
                 })
 
             } else if (data.CodeResponse == 200) {
