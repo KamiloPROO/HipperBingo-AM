@@ -24,7 +24,7 @@ function CrearPersona() {
             IdProject: "7",
             Passworrd: "",
             IdRole: "1",
-    
+            
         }
     
         registro(registrarPersona)
