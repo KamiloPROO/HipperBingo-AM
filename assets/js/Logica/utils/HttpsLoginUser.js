@@ -6,16 +6,24 @@ function CallEndPointPost(url, jsonArgs) {
         data: jsonArgs,
         success: function (data) {
 
-                //  const dataData = data.Data;
+                 
 
                 console.log(data);
 
-                //  const idper = dataData.IdPerson;
+               
 
                 if (data.CodeResponse == 200 ){
 
-                    // localStorage.setItem("idPersonaQlub",idper);
-                    // window.location.href = URL_API_BASE;
+                    const dataData = data.Data;
+
+                    const idper = dataData.IdPerson;
+                    const numUser = dataData.Names;
+                    const celUser = dataData.Phone;
+
+                    localStorage.setItem("idPersonHipper",idper);
+                    localStorage.setItem("nomUserHipper",numUser);
+                    localStorage.setItem("celUserHipper",celUser);
+
                     location.replace("interfasdejuego.html");
                     location.href ="interfasdejuego.html";
 
