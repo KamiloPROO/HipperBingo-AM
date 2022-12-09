@@ -1,0 +1,9 @@
+.contenedorQR{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    margin-left: 30%;
+    padding: 5px ;
+    background: rgb(255, 255, 255);
+}

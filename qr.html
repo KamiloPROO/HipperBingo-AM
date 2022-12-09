@@ -19,6 +19,26 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <link rel="stylesheet" href="assets/css/wallet.css">
+    <link rel="stylesheet" href="assets/css/qr.css">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+        integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"
+        integrity="sha512-szJ5FSo9hEmXXe7b5AUVtn/WnL8a5VofnFeYC2i2z03uS2LhAch7ewNLbl5flsEmTTimMN0enBZg/3sQ+YOSzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.8.2/forge.all.min.js"></script>
 
 </head>
 
@@ -152,36 +172,27 @@
                     <div class="row justify-content-center g-4 align-items-center">
                         <div class="col-lg-6 col-12">
 
-                            <div class="cardWallet" id="containerCardTron">
-                                <h3 id="nombreUser" class="moverRefe">Juan Camilo</h3>
-                                <h3 style="margin-left: 5%;">_____________________________________________</h3>
-                                <div class="contaSaldo">
-                                    <div style="display: flex; overflow: hidden;">
-                                        <h1 style="margin-left: 40px; margin-top: -5px; color: rgb(15, 223, 153);">$</h1>
-                                        <h1 style="margin-left: 5px; margin-top: -5px; color: rgb(15, 223, 153); text-align: center;"
-                                            id="saldoUsdtWallet">Saldo</h1>
-                                    </div>
-                                    <h1 style="margin-left: 30%; margin-top: -30px;">USDT</h1>
-                                </div>
-                                <div class="containerFechaCreada">
-                                    <b class="fechaCreada" id="fechaCreada">fecha creada</b>
-                                    <h3 style="font-weight: bolder; margin-left: -30px;">Creada</h3>
-                                    <br>
-                                </div>
-                                <div class="containerFechaActu">
-                                    <b class="fechaCreada" id="fechaActua" style=" margin-left: -70px;">fecha creada</b>
-                                    <h3 style="font-weight: bolder; margin-left: 5px;">Actualizada</h3>
-                                    <br>
-                                </div>
+                            <div>
+                                <br>
+                                <!-- <h1 class="camilo" id="crearM">Crear Cuenta Tron</h1> -->
+                                <h1 style="margin-left: 45%;">QR</h1>
+
                             </div>
 
-                            <div style="margin-top: 20px; width: 100%;">
+                            <div id="contenedorQR" class="contenedorQR">
 
-                                <!-- <button type="button" id="GeneramosRandom">Generar</button> -->
-                                <a href="qr.html" type="button" id="GeneramosRandom"
-                                    style="background: #eb94ff85; width: 60%; height: 40px; margin-left: 20%; text-align: center; padding: 8px; font-weight: bold; border-radius: 10px; overflow: hidden;">PAYMENT
-                                    GATEWAY</a>
                             </div>
+                            <br>
+                            <h3 id="subimosAdress" class="adress">adres</h3>
+                            <h1 style="margin-top: -35px;">________________________________</h1>
+                            <button class="btnCamilo" style="background: #eb94ff85; font-weight: bold; border-radius: 10px; width: 40%; margin-left: 30%;"
+                                onclick="copiarNumReferencia('subimosAdress')">Copiar Direccion</button>
+                            <br>
+                            <br>
+                            <h3 style="font-weight: bolder;" class="parra">Remember to only send USDT, otherwise you may
+                                lose your tokens</h2>
+
+
                         </div>
                     </div>
                 </div>
@@ -246,16 +257,30 @@
         ga('set', 'transport', 'beacon');
         ga('send', 'pageview')
     </script>
+
+    <script>
+        function copiarNumReferencia(id_elemento) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Successfully Copied Reference',
+            })
+        }
+    </script>
+
+
     <script src="https://www.google-analytics.com/analytics.js" async></script>
 
 
+    <script defer src="qr.js"></script>
+    <script src="./assets/js/logica/utils/HttpsGetPayMentsAddress.js"></script>
 
-    <script src="./assets/js/Logica/routes/routes.js"></script>
-
-    <script src="./assets/js/Logica/utils/HttpsGetAccountUser.js"></script>
-
-    <script src="./assets/js/Logica/utils/HttpsCrearCuentaTron.js"></script>
-    <script src="./assets/js/Logica/bussiness/crearCuentaTronBussiness.js"></script>
 
 </body>
 
