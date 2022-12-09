@@ -5,22 +5,20 @@ function CallEndPointPost(url, jsonArgs) {
         data: jsonArgs,
         success: function (data) {
 
-          console.log(data);
-
-            //   if (data.Codigo === 200 ){
+              if (data.Codigo === 200 ){
                 
-            //     window.location.href = URL_API_BASE;
-            //     location.replace("Wallet.html");
-            //     location.href ="Wallet.html";
+                // window.location.href = URL_API_BASE;
+                location.replace("wallet.html");
+                location.href ="wallet.html";
                 
 
-            //   }else{
-            //     Swal.fire({
-            //       icon: 'error',
-            //       title: 'Oops...',
-            //       text: 'No pudimos crear tu cuenta',
-            //     })
-            //   };
+              }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'No pudimos crear tu cuenta',
+                })
+              };
         },
         error: function () {
             alert("Ha ocurrido un error, por favor vuelva a intentarlo")            

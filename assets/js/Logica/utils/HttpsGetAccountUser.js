@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', e => {
         data: { "IdPersona": idpersona },
         success: function (data) {
 
-            console.log(data);
              
             if (data == null){
  

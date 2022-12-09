@@ -15,7 +15,7 @@ function CallEndPointPost(url, jsonArgs) {
                 if (data.CodeResponse === 200 ){
 
                     localStorage.setItem("idPersonaQlub",idper);
-                    // window.location.href = URL_API_BASE;
+
                     location.replace("login.html");
                     location.href ="login.html";
 
